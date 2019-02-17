@@ -49,12 +49,4 @@ class Deck:
         self.ret_deck = []
         for card in self.deck:
             self.ret_deck.append(card.face_val)
-        return str(self.ret_deck)
-        
-
-deck = Deck()
-print(deck)
-
-
-
-         
+        return str(self.ret_deck)       
