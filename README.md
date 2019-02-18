@@ -101,3 +101,45 @@ Sample Output:
 ```
 ['9', 'A', '7', '3', 'Q', '7', '5', '9', '5', '7', 'J', '8', '2', '2', '8', '6', '6', '4', 'K', '3', 'Q', '9', 'K', '10', '10', '2', '10', 'A', '2', '4', 'K', 'Q', 'A', '10', '6', '5', 'A', 'Q', '6', '5', 'J', '4', 'J', 'J', '3', '4', '8', '9', '8', '3', 'K', '7']
 ```
+
+## Player
+This model represents both the player and the dealer in the game.
+
+### init method
+``` python
+def __init__(self, deck):
+        self.hand = []
+        self.deck = deck
+        self.points = 0
+```
+`self.deck` - The deck the instance has acces to, from which it will draw cards from
+
+### Hit
+``` python 
+def hit(self):
+        self.card = self.deck.drawCard()
+        self.hand.append(self.card)
+        self.points += self.card.value
+```
+This method _draws_ a card from a _deck_ adds it to the players hand. it then calculates the value of the card.
+
+### Show hand
+``` python
+def showHand(self):
+        ret_hand = []
+        for card in self.hand:
+            ret_hand.append(card.face_val)
+        return ret_hand
+```
+This function returns the palayers hand as a list containing the face value of the card
+
+### String Representation
+``` python
+def __str__(self):
+        return """
+            Player Hand: {hand} \n
+            Player Points: {points}
+                """.format(hand=self.showHand(), points=self.points)
+```
+Returns the hand of the player (Output for `showHand`) and the players total points as a `string`
+
